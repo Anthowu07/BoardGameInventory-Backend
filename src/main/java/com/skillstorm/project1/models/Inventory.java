@@ -19,12 +19,12 @@ public class Inventory {
     private int inventory_id;
 
     // ManyToOne relationship with boardgames because each inventory entry is associated with only one boardgame
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "boardgame_id")
     private BoardGame boardgame;
 
     // ManyToOne relationship with warehouse because each inventory entry is associated with only one warehouse
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 
