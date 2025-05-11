@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.project1.models.Inventory;
 import com.skillstorm.project1.models.Warehouse;
@@ -38,6 +39,8 @@ public class WarehouseService {
     }
 
     //Used for DELETE requests
+    
+    @Transactional
     public void deleteById(int id) {
         List<Inventory> inventories = getInventoriesByWarehouseId(id);
         inventoryRepo.deleteAll(inventories);

@@ -24,13 +24,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int order_id;
 
-    //ManyToOne relationship with boardgames because each order entry is associated with only one boardgame
-    @ManyToOne(fetch = FetchType.EAGER)
+    // ManyToOne relationship with boardgames because each inventory entry is associated with only one boardgame
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "boardgame_id")
     private BoardGame boardgame;
 
-    //ManyToOne relationship with warehouse because each order entry is associated with only one warehouse
-    @ManyToOne(fetch = FetchType.EAGER)
+    // ManyToOne relationship with warehouse because each inventory entry is associated with only one warehouse
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 

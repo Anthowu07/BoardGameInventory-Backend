@@ -18,13 +18,13 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inventory_id;
 
-    //ManyToOne relationship with boardgames because each inventory entry is associated with only one boardgame
-    @ManyToOne(fetch = FetchType.EAGER)
+    // ManyToOne relationship with boardgames because each inventory entry is associated with only one boardgame
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "boardgame_id")
     private BoardGame boardgame;
 
-    //ManyToOne relationship with warehouse because each inventory entry is associated with only one warehouse
-    @ManyToOne(fetch = FetchType.EAGER)
+    // ManyToOne relationship with warehouse because each inventory entry is associated with only one warehouse
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
     private Warehouse warehouse;
 
@@ -51,7 +51,7 @@ public class Inventory {
         this.quantity_available = quantity_available;
         this.reorder_point = reorder_point;
     }
-    
+
     public Inventory(int inventory_id, BoardGame boardgame, Warehouse warehouse, int quantity_available,
             int reorder_point, int maximum_stock_level, int minimum_stock_level) {
         this.inventory_id = inventory_id;
@@ -121,8 +121,11 @@ public class Inventory {
 
     // @Override
     // public String toString() {
-    //     return "Inventory [inventory_id=" + inventory_id + ", boardgame=" + boardgame + ", warehouse=" + warehouse
-    //             + ", quantity_available=" + quantity_available + ", reorder_point=" + reorder_point
-    //             + ", maximum_stock_level=" + maximum_stock_level + ", minimum_stock_level=" + minimum_stock_level + "]";
+    // return "Inventory [inventory_id=" + inventory_id + ", boardgame=" + boardgame
+    // + ", warehouse=" + warehouse
+    // + ", quantity_available=" + quantity_available + ", reorder_point=" +
+    // reorder_point
+    // + ", maximum_stock_level=" + maximum_stock_level + ", minimum_stock_level=" +
+    // minimum_stock_level + "]";
     // }
 }
