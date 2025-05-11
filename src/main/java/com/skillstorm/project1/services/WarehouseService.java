@@ -39,6 +39,8 @@ public class WarehouseService {
 
     //Used for DELETE requests
     public void deleteById(int id) {
+        List<Inventory> inventories = getInventoriesByWarehouseId(id);
+        inventoryRepo.deleteAll(inventories);
         repo.deleteById(id);
     }
 
